@@ -15,7 +15,7 @@
 
   const SHAPES = {
     // crop = [x, y, width, height] as fractions of the photo; levels = [darkest, brightest that still gets a dot]
-    me:    { kind: 'photo', src: 'img/portrait.jpg', crop: [0.12, 0.2, 0.48, 0.5], levels: [0.1, 0.74], gamma: 0.85, color: '#16140f',
+    me:    { kind: 'photo', src: 'img/portrait-2.jpg', crop: [0.22, 0.17, 0.66, 0.64], levels: [0.04, 0.72], gamma: 1.3, cut: [0.5, 0.55], cutSoft: 0.38, color: '#16140f',
              cap: canHover ? 'Hover a line · click anywhere' : 'Tap a line' },
     frc:   { kind: 'text', lines: ['1st'], color: '#d9361c', cap: 'Greek team in FRC · Creativity Award 2025' },
     video: { kind: 'text', lines: ['8.4M'], color: '#2440c8', cap: 'Recorded views · Jul to Nov 2026' },
@@ -73,7 +73,8 @@
     const sx = fx * im.naturalWidth, sy = fy * im.naturalHeight;
     const sw = fw * im.naturalWidth, shh = fh * im.naturalHeight;
     const k = Math.min(aw / sw, ah / shh), dw = sw * k, dh = shh * k;
-    a.drawImage(im, sx, sy, sw, shh, (aw - dw) / 2, (ah - dh) / 2, dw, dh);
+    sh.rect = { x: (aw - dw) / 2, y: (ah - dh) / 2, w: dw, h: dh };
+    a.drawImage(im, sx, sy, sw, shh, sh.rect.x, sh.rect.y, dw, dh);
   }
 
   function drawText(a, aw, ah, lines) {
@@ -126,6 +127,9 @@
     const pts = [];
     let minX = Infinity, maxX = -Infinity, maxY = -Infinity;
     const [lo, hi] = sh.levels || [0, 1], gamma = sh.gamma || 1;
+    const photo = sh.kind === 'photo' && sh.rect;
+    const fade = photo ? (sh.fade || 0) : 0;
+    const cut = photo ? sh.cut : null;
     for (let r = 0; r < rowsN; r++) {
       for (let c = 0; c < cols; c++) {
         const i = (r * cols + c) * 4;
@@ -134,6 +138,23 @@
         if (t <= 0.05) continue;
         if (t > 1) t = 1;
         if (gamma !== 1) t = Math.pow(t, gamma);
+        if (fade || cut) {
+          const u = (((c + 0.5) / cols) * A.width - sh.rect.x) / sh.rect.w;
+          const v = (((r + 0.5) / rowsN) * A.height - sh.rect.y) / sh.rect.h;
+          if (cut) { // the top-left corner dissolves: dots shrink to nothing across a wide, slightly uneven band
+            const soft = sh.cutSoft || 0.3;
+            const n = Math.sin(c * 12.9898 + r * 78.233) * 43758.5453;
+            const s = u / cut[0] + v / cut[1] + ((n - Math.floor(n)) - 0.5) * soft * 0.5;
+            const g = (s - (1 - soft)) / (2 * soft);
+            if (g <= 0) continue;
+            if (g < 1) t *= g * g * (3 - 2 * g);
+          }
+          if (fade) { // soften the photo's rectangular edge
+            const e = Math.min(u, 1 - u, v, 1 - v) / fade;
+            if (e <= 0) continue;
+            if (e < 1) t *= e * e * (3 - 2 * e);
+          }
+        }
         const rad = maxR * Math.sqrt(t);
         if (rad < 0.5) continue;
         const x = region.x + (c + 0.5 + (r & 1 ? 0.5 : 0)) * s;
