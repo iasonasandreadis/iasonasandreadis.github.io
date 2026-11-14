@@ -24,7 +24,7 @@
     ugc:   { kind: 'text', lines: ['500K+'], color: '#b4552d', cap: 'Views in under 30 days' },
     first: { kind: 'text', lines: ['FLL FTC', 'FGC FRC'], color: '#16140f', cap: 'All four FIRST programs · 2022 to 2026' },
   };
-  const ORDER = ['me', 'frc', 'video', 'study', 'run', 'ugc', 'first'];
+  const ORDER = ['me', 'ugc', 'video', 'study', 'frc', 'run', 'first'];
 
   /* ---------- geometry ---------- */
   let W = 0, H = 0, region = null, s = 6, cols = 0, rowsN = 0, maxR = 3;
