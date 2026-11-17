@@ -21,10 +21,11 @@
     video: { kind: 'text', lines: ['8.4M'], color: '#2440c8', cap: 'Recorded views · Jul to Nov 2026' },
     study: { kind: 'text', lines: ['50'], color: '#5b3fd4', cap: 'Sign-ups in 12 days · Oct 2026' },
     run:   { kind: 'route', color: '#1d7a4a', cap: 'GPS art, planned on real streets' },
+    foni:  { kind: 'text', lines: ['0.5s'], color: '#0e7490', cap: 'From letting go of the key to typed text' },
     ugc:   { kind: 'text', lines: ['500K+'], color: '#b4552d', cap: 'Views in under 30 days' },
     first: { kind: 'text', lines: ['FLL FTC', 'FGC FRC'], color: '#16140f', cap: 'All four FIRST programs · 2022 to 2026' },
   };
-  const ORDER = ['me', 'ugc', 'video', 'study', 'frc', 'run', 'first'];
+  const ORDER = ['me', 'ugc', 'video', 'study', 'frc', 'run', 'foni', 'first'];
 
   /* ---------- geometry ---------- */
   let W = 0, H = 0, region = null, s = 6, cols = 0, rowsN = 0, maxR = 3;

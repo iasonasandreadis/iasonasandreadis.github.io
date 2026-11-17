@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    { "source": "/foni", "destination": "/foni/", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/foni/", "destination": "https://iasonasandreadis.github.io/foni/" },
+    { "source": "/foni/:path+", "destination": "https://iasonasandreadis.github.io/foni/:path+" }
+  ]
+}
