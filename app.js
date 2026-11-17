@@ -18,7 +18,7 @@
     me:    { kind: 'photo', src: 'img/portrait-2.jpg', crop: [0.22, 0.17, 0.66, 0.64], levels: [0.04, 0.72], gamma: 1.3, cut: [0.5, 0.55], cutSoft: 0.38, color: '#16140f',
              cap: canHover ? 'Hover a line · click anywhere' : 'Tap a line' },
     frc:   { kind: 'text', lines: ['1st'], color: '#d9361c', cap: 'Greek team in FRC · Creativity Award 2025' },
-    video: { kind: 'text', lines: ['8.4M'], color: '#2440c8', cap: 'Recorded views · Jul to Nov 2026' },
+    video: { kind: 'text', lines: ['8.4M'], color: '#2440c8', cap: 'Recorded views · Aug to Nov 2026' },
     study: { kind: 'text', lines: ['50'], color: '#5b3fd4', cap: 'Sign-ups in 12 days · Oct 2026' },
     run:   { kind: 'route', color: '#1d7a4a', cap: 'GPS art, planned on real streets' },
     foni:  { kind: 'text', lines: ['0.5s'], color: '#0e7490', cap: 'From letting go of the key to typed text' },

@@ -1,12 +1,18 @@
 {
   "redirects": [
     { "source": "/foni", "destination": "/foni/", "permanent": true },
-    { "source": "/split-factory-site", "destination": "/split-factory-site/", "permanent": true }
+    { "source": "/split-factory-site", "destination": "/split-factory-site/", "permanent": true },
+    { "source": "/studysocial-case-study", "destination": "/studysocial-case-study/", "permanent": true },
+    { "source": "/pyroneers-case-study", "destination": "/pyroneers-case-study/", "permanent": true }
   ],
   "rewrites": [
     { "source": "/foni/", "destination": "https://iasonasandreadis.github.io/foni/" },
     { "source": "/foni/:path+", "destination": "https://iasonasandreadis.github.io/foni/:path+" },
     { "source": "/split-factory-site/", "destination": "https://iasonasandreadis.github.io/split-factory-site/" },
-    { "source": "/split-factory-site/:path+", "destination": "https://iasonasandreadis.github.io/split-factory-site/:path+" }
+    { "source": "/split-factory-site/:path+", "destination": "https://iasonasandreadis.github.io/split-factory-site/:path+" },
+    { "source": "/studysocial-case-study/", "destination": "https://iasonasandreadis.github.io/studysocial-case-study/" },
+    { "source": "/studysocial-case-study/:path+", "destination": "https://iasonasandreadis.github.io/studysocial-case-study/:path+" },
+    { "source": "/pyroneers-case-study/", "destination": "https://iasonasandreadis.github.io/pyroneers-case-study/" },
+    { "source": "/pyroneers-case-study/:path+", "destination": "https://iasonasandreadis.github.io/pyroneers-case-study/:path+" }
   ]
 }
