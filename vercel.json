@@ -1,9 +1,12 @@
 {
   "redirects": [
-    { "source": "/foni", "destination": "/foni/", "permanent": true }
+    { "source": "/foni", "destination": "/foni/", "permanent": true },
+    { "source": "/split-factory-site", "destination": "/split-factory-site/", "permanent": true }
   ],
   "rewrites": [
     { "source": "/foni/", "destination": "https://iasonasandreadis.github.io/foni/" },
-    { "source": "/foni/:path+", "destination": "https://iasonasandreadis.github.io/foni/:path+" }
+    { "source": "/foni/:path+", "destination": "https://iasonasandreadis.github.io/foni/:path+" },
+    { "source": "/split-factory-site/", "destination": "https://iasonasandreadis.github.io/split-factory-site/" },
+    { "source": "/split-factory-site/:path+", "destination": "https://iasonasandreadis.github.io/split-factory-site/:path+" }
   ]
 }
